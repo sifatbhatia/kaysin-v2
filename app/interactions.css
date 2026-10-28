@@ -1,0 +1,29 @@
+/* The original blues: explicit playback affordances, no moving artwork. */
+.record-art { position: relative; outline: 2px solid transparent; outline-offset: 5px; transition: outline-color 160ms ease; }
+.record-art::after { content: 'Play preview'; position: absolute; left: 18px; bottom: 18px; padding: 10px 15px; background: var(--periwinkle); color: var(--navy); font-size: 13px; line-height: 1.2; opacity: 0; transition: opacity 140ms ease; pointer-events: none; }
+.record-art[aria-label^='Pause preview']::after { content: 'Pause preview'; }
+.record-art[aria-label^='Loading preview']::after { content: 'Loading preview'; }
+.record-art:focus-visible::after { opacity: 1; }
+.record-art:focus-visible { outline-color: var(--blue); }
+.catalogue-row { transition: background-color 150ms ease; }
+.record-play { transition: background-color 150ms ease, color 150ms ease, box-shadow 120ms ease; }
+.desktop-navigation a { position: relative; }
+.desktop-navigation a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 170ms cubic-bezier(.23, 1, .32, 1); }
+.catalogue-row:focus-within { background: #17273608; }
+@media (hover: hover) and (pointer: fine) {
+ .record-art:hover { outline-color: var(--blue); }
+ .record-art:hover::after { opacity: 1; }
+ .record-art:hover img { opacity: 1; }
+ .record-play:hover { color: var(--navy); background: var(--periwinkle); box-shadow: inset 0 1px 0 #ffffff50, 0 2px 3px #17273618; }
+ .record-play:active { transform: none; box-shadow: inset 0 2px 3px #17273622; }
+ .catalogue-row:hover { background: #17273608; }
+ .desktop-navigation a:hover { text-decoration: none; }
+ .desktop-navigation a:hover::after { transform: scaleX(1); transform-origin: left; }
+ footer[id='contact'] div:has(> a[href^='mailto:']:hover) { background: #17273605; }
+ a[href^='mailto:']:hover { text-decoration-thickness: 2px; }
+ .play-button:hover { box-shadow: inset 0 1px 0 #ffffff90, 0 2px 5px #00112425; }
+ .play-button:active { transform: none; box-shadow: inset 0 2px 4px #17273625; }
+ .film-frame > button:hover > span { background: var(--ice); box-shadow: 0 2px 8px #17273630; }
+ .audio-player > button:hover { background: #1727360c; }
+}
+@media (prefers-reduced-motion: reduce) { .record-art, .record-art::after, .record-play, .catalogue-row, .desktop-navigation a::after { transition: none; } }

@@ -1,0 +1,30 @@
+[
+  {
+    "local": "/images/booth-red.webp",
+    "sourcePost": "https://www.instagram.com/kaysin/p/DRnUNz1E-IX/",
+    "originalCaption": "Photo by Kaysin on November 28, 2025.",
+    "treatment": "RGB WebP from public Instagram thumbnail; no generative changes",
+    "rights": "Artist-owned public-post source, photographer permission still required for launch."
+  },
+  {
+    "local": "/images/booth-hands.webp",
+    "sourcePost": "https://www.instagram.com/kaysin/p/DUJuYMLEs3h/",
+    "originalCaption": "Photo by Kaysin on January 30, 2026.",
+    "treatment": "RGB WebP from public Instagram thumbnail; no generative changes",
+    "rights": "Artist-owned public-post source, photographer permission still required for launch."
+  },
+  {
+    "local": "/images/club-crowd.webp",
+    "sourcePost": "https://www.instagram.com/kaysin/p/DTlifdhk42G/",
+    "originalCaption": "Photo by Kaysin on January 16, 2026.",
+    "treatment": "RGB WebP from public Instagram thumbnail; no generative changes",
+    "rights": "Artist-owned public-post source, photographer permission still required for launch."
+  },
+  {
+    "local": "/images/candid-night.webp",
+    "sourcePost": "https://www.instagram.com/kaysin/p/DcZQIqlD8M-/",
+    "originalCaption": "Photo by Kaysin on August 23, 2026.",
+    "treatment": "RGB WebP from public Instagram thumbnail; no generative changes",
+    "rights": "Artist-owned public-post source, photographer permission still required for launch."
+  }
+]

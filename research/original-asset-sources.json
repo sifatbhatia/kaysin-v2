@@ -1,0 +1,39 @@
+{
+  "portrait.jpg": "https://images.squarespace-cdn.com/content/v1/6316f6a5964a2674c1c57c9e/3ad002cd-3650-4cbe-986c-3558854311a1/iktg-25.JPG?format=2500w",
+  "logo.png": "https://images.squarespace-cdn.com/content/v1/6316f6a5964a2674c1c57c9e/b3cf203e-30ff-4a64-9f42-b81e13c9efc2/image+1.png?format=1500w",
+  "live.png": "https://images.squarespace-cdn.com/content/v1/6316f6a5964a2674c1c57c9e/f0535935-fff3-41a1-be82-17f2b3d7d2e2/Screenshot+2022-10-13+191646.png",
+  "lift-your-hands.jpg": "https://i1.sndcdn.com/artworks-fKGHUUKpIBIP-0-t500x500.jpg",
+  "glitter-and-gold.jpg": "https://i1.sndcdn.com/artworks-D8thZhWzGVvJ-0-t500x500.jpg",
+  "guest-mix.jpg": "https://i1.sndcdn.com/artworks-bHKCXEq8mtaIxCqc-ZghkyA-t500x500.jpg",
+  "hoobe.webp": "https://cdn.hoobe.media/67f1ac74191b8f7cdf1a68de/a8929476-d164-48f0-9e2e-c0f5abd4bff7.webp",
+  "kaysin-cutout.webp": {
+    "derivedFrom": "hoobe.webp",
+    "operation": "Connected neutral-background removal and feathered alpha with Pillow. Original artist likeness retained.",
+    "status": "V1 derivative, not rendered in V2"
+  },
+  "wordmark.svg": {
+    "derivedFrom": "logo.png",
+    "operation": "Crop white mark, convert to ink silhouette and trace with potrace. Original proportions retained."
+  },
+  "wordmark.png": {
+    "derivedFrom": "logo.png",
+    "operation": "Transparent ink recolor and tight crop."
+  },
+  "about-portrait.webp": {
+    "derivedFrom": "live.png",
+    "operation": "Crop [210,145,1410,1440] to remove screenshot framing. Retained in colour as the source for the V2 crop."
+  },
+  "day-trip.jpg": {
+    "source": "https://i.ytimg.com/vi/sXkGLIahuFw/maxresdefault.jpg",
+    "context": "Official Kaysin YouTube set, title verified via public oEmbed."
+  },
+  "release-covers": {
+    "source": "Apple iTunes Search API",
+    "details": "Each selected record and sourceArtwork URL is stored in app/releases.json; preview audio streams from Apple, no copied full tracks."
+  },
+  "rights": "Artist, photographer, labels and platforms retain their rights. Preview use does not establish permission for public commercial launch.",
+  "mirrors-v2.webp": {
+    "derivedFrom": "about-portrait.webp",
+    "operation": "Crop [4,4,1196,1291] to remove the remaining screenshot edge. No generated image content or colour filter."
+  }
+}

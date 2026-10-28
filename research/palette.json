@@ -1,0 +1,36 @@
+{
+  "source": "https://www.kaysin.com/home",
+  "measured": [
+    {
+      "name": "Midnight navy",
+      "hex": "#172736",
+      "role": "Computed section-background and Squarespace siteBackgroundColor"
+    },
+    {
+      "name": "Deep blue",
+      "hex": "#002A52",
+      "role": "Computed bright-section background and darkAccent token"
+    },
+    {
+      "name": "Periwinkle",
+      "hex": "#9AB3F2",
+      "role": "Computed Bandsintown request-show button"
+    },
+    {
+      "name": "Ice",
+      "hex": "#EAF0F6",
+      "role": "Computed navigation text and light-accent token"
+    },
+    {
+      "name": "White",
+      "hex": "#FFFFFF",
+      "role": "Computed headings and artist logo"
+    },
+    {
+      "name": "Burgundy",
+      "hex": "#6D222C",
+      "role": "Inherited body/accent token; secondary, not the visible dominant surface"
+    }
+  ],
+  "interpretation": "V2 should keep midnight/blue as the anchor, ice-white logo, periwinkle for actual actions. Burgundy is available but not a license to repaint the brand red."
+}

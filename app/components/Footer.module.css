@@ -1,0 +1,33 @@
+.footer { color: var(--navy); background: var(--ice); }
+.contacts { padding: 65px var(--gutter) 75px; }
+.heading { display: flex; align-items: baseline; justify-content: space-between; gap: 25px; margin-bottom: 44px; }
+.heading h2 { font-size: clamp(40px, 4.5vw, 66px); font-weight: 400; letter-spacing: -.045em; line-height: 1.1; }
+.heading span { font-size: 13px; }
+.row { border-top: 1px solid #17273640; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 30px; padding: 28px 0; align-items: baseline; }
+.row:last-child { border-bottom: 1px solid #17273640; }
+.row h3 { font-size: 15px; font-weight: 400; }
+.row a { width: fit-content; max-width: 100%; font-size: clamp(20px, 2.6vw, 41px); line-height: 1.35; letter-spacing: -.035em; text-decoration: none; overflow-wrap: anywhere; }
+.row a:hover { text-decoration: underline; }
+.base { display: flex; align-items: center; gap: 45px; padding: 35px var(--gutter) max(35px, env(safe-area-inset-bottom)); color: var(--ice); background: var(--navy); }
+.brand { flex-shrink: 0; width: 160px; }
+.brand img { width: 100%; height: auto; }
+.base nav { display: flex; gap: 30px; margin-left: auto; }
+.base a:not(.brand) { font-size: 13px; text-decoration: none; }
+.base a:hover { text-decoration: underline; }
+.top { margin-left: 24px; }
+@media (min-width: 1700px) { .contacts, .base { padding-inline: max(var(--gutter), calc((100vw - 1600px) / 2)); } }
+@media (max-width: 850px) { .row { grid-template-columns: 130px minmax(0, 1fr); gap: 20px; } .base { flex-wrap: wrap; gap: 28px; } .base nav { margin-left: auto; } .top { margin-left: auto; } }
+@media (max-width: 600px) {
+  .contacts { padding-block: 40px 44px; }
+  .heading { margin-bottom: 27px; align-items: center; }
+  .heading h2 { font-size: 40px; }
+  .heading span { max-width: 100px; font-size: 11px; text-align: right; }
+  .row { grid-template-columns: 1fr; gap: 10px; padding-block: 23px; }
+  .row h3 { font-size: 12px; }
+  .row a { font-size: clamp(17px, 4.8vw, 25px); letter-spacing: -.03em; }
+  .base { display: grid; grid-template-columns: 1fr auto; gap: 28px 15px; padding-top: 28px; padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+  .brand { width: 126px; }
+  .base nav { grid-column: 1 / -1; grid-row: 2; margin: 0; gap: 25px; }
+  .base .top { grid-column: 2; grid-row: 1; margin: 0; font-size: 11px; }
+  .base nav a { font-size: 12px; }
+}

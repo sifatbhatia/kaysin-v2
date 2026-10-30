@@ -1,6 +1,7 @@
 import './globals.css';
 import SmoothScroll from './components/SmoothScroll';
 import './interactions.css';
+import './hybrid.css';
 
 export const metadata = {
   title: 'KAYSIN | Music, live sets & shows',

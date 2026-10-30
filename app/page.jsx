@@ -3,6 +3,7 @@ import LiveSet from './components/LiveSet';
 import Footer from './components/Footer';
 
 const external = { target: '_blank', rel: 'noreferrer' };
+const pressKit = 'https://www.dropbox.com/scl/fi/0dcz3o8e9uhzqwfgwi22m/Kaysin-EPK-2024.pdf?rlkey=jjb3zmkyklrmj914oo5fxqqb8&st=myuwboew&dl=0';
 
 export default function Home() {
   return (
@@ -20,18 +21,20 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="about-section page-gutter" id="about">
-          <div className="about-photos">
-            <img className="about-candid" src="/images/candid-night.webp" width="640" height="640" alt="Kaysin outside a café at night" loading="lazy" />
-            <img className="about-booth" src="/images/booth-red.webp" width="640" height="640" alt="Kaysin behind the decks in a crowded club" loading="lazy" />
+        <section className="about-section about-v1 page-gutter" id="about" aria-labelledby="about-heading">
+          <div className="about-heading">
+            <h2 id="about-heading">About Kaysin</h2>
+            <p>Los Angeles</p>
           </div>
           <div className="about-copy">
-            <h2>About Kaysin</h2>
-            <p className="bio-lead">DJ, producer and A&R, based in Los Angeles.</p>
-            <p>Kaysin started producing and DJing while studying in Santa Barbara. His own catalogue connects Repopulate Mars, South of Saturn, Thrive and Sink or Swim, with collaborations and remixes alongside 3Beat, John Summit, Wenzday, LOVRA and Mindchatter.</p>
-            <p>After meeting Lee Foss on Groove Cruise, he began helping with the label. He now handles A&R across Repopulate Mars, South of Saturn and North of Neptune alongside his own music and shows.</p>
-            <p>His sets have taken him from Sound in L.A. to Factory Town in Miami, EDC and Day Trip.</p>
+            <p className="about-intro">Kaysin is a DJ, producer and A&R for Lee Foss’ Repopulate Mars, South of Saturn and North of Neptune.</p>
+            <p>He started producing and DJing while studying in Santa Barbara. Now based in Los Angeles, his own records span Repopulate Mars, Thrive, Sink or Swim and Myth of Nyx, with collaborations and remixes alongside John Summit, Wenzday, LOVRA and Mindchatter.</p>
+            <p>After meeting Lee Foss while both were playing Groove Cruise, he began helping with the label. The work grew into an A&R role that runs alongside his own music and shows, from Sound in L.A. to Factory Town in Miami, EDC and Day Trip.</p>
+            <a className="press-link" href={pressKit} {...external}>Press kit</a>
           </div>
+          <figure className="about-photo">
+            <img src="/images/hoobe.webp" width="1035" height="1035" alt="Kaysin in a black racing jacket" loading="lazy" />
+          </figure>
         </section>
       </main>
       <Footer />

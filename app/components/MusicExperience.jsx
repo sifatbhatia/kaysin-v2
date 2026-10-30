@@ -6,7 +6,7 @@ import Navigation from './Navigation';
 
 const external = { target: '_blank', rel: 'noreferrer' };
 const title = record => record.title.split(' feat. ')[0].replace(' (John Summit & Kaysin Remix)', '');
-const credits = record => `${record.artist}${record.title.includes(' feat. ') ? ` feat. ${record.title.split(' feat. ')[1]}` : ''}`;
+const credits = record => record.title.includes('Remix') ? 'Will Taylor (UK) · John Summit & Kaysin remix' : `${record.artist}${record.title.includes(' feat. ') ? ` feat. ${record.title.split(' feat. ')[1]}` : ''}`;
 const clock = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
 
 function PlayIcon({ playing }) {
@@ -15,6 +15,7 @@ function PlayIcon({ playing }) {
 
 export default function MusicExperience() {
   const audio = useRef(null);
+  const shelf = useRef(null);
   const generation = useRef(0);
   const chosen = useRef(0);
   const source = useRef('');
@@ -68,6 +69,16 @@ export default function MusicExperience() {
     }
   }
 
+  function move(direction) {
+    const container = shelf.current;
+    if (!container) return;
+    const card = container.querySelector('article');
+    const gap = parseFloat(window.getComputedStyle(container).columnGap) || 28;
+    const distance = (card?.getBoundingClientRect().width || 300) + gap;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    container.scrollBy({ left: direction * distance, behavior: reduced ? 'auto' : 'smooth' });
+  }
+
   const isPlaying = i => i === index && phase === 'playing';
   const action = i => i === index && phase === 'loading' ? 'Loading preview' : isPlaying(i) ? 'Pause preview' : 'Play preview';
 
@@ -91,20 +102,35 @@ export default function MusicExperience() {
         </div>
       </section>
 
-      <section className="music-section page-gutter" id="music">
-        <div className="section-heading"><h2>Music</h2><div><a href="https://open.spotify.com/artist/10mZhaOPNKtQfg46DptrBU" {...external}>Spotify</a><a href="https://www.beatport.com/artist/kaysin/641789" {...external}>Beatport</a></div></div>
-        <div className="featured-records">
-          {releases.slice(0, 2).map((record, i) => (
-            <article className="record" key={record.title}>
-              <button className="record-art" onClick={() => play(i)} aria-label={`${action(i)}: ${record.title}`}><img src={record.art} width="800" height="800" alt={`${record.title} artwork`} loading="lazy" /></button>
-              <div className="record-description"><div><h3>{title(record)}</h3><p>{record.artist} <span>· {record.year}</span></p><small>{record.label}</small></div><button className="record-play" aria-label={`${action(i)}: ${record.title}`} onClick={() => play(i)}><PlayIcon playing={isPlaying(i)} /></button><a href={i === 0 ? 'https://orcd.co/sos129' : 'https://orcd.co/rpm268'} {...external}>Listen</a></div>
+      <section className="records" id="music" aria-labelledby="records-heading">
+        <div className="records-top page-gutter">
+          <div><p className="section-label">Music</p><h2 id="records-heading">Selected records</h2></div>
+          <div className="shelf-controls" aria-label="Browse releases">
+            <button type="button" onClick={() => move(-1)} aria-label="Scroll to previous releases">Previous</button>
+            <button type="button" onClick={() => move(1)} aria-label="Scroll to next releases">Next</button>
+          </div>
+        </div>
+        <div className="record-shelf" ref={shelf} tabIndex={0} role="region" aria-label="Selected records, scroll horizontally to browse">
+          {releases.map((record, i) => (
+            <article className={index === i && phase !== 'idle' ? 'record is-selected' : 'record'} key={record.title}>
+              <button type="button" className="sleeve" onClick={() => play(i)} aria-label={action(i) + ': ' + record.title} aria-pressed={isPlaying(i)}>
+                <img src={record.art} width="800" height="800" alt={record.title + ' cover artwork'} loading="lazy" />
+                <span className="sleeve-play"><PlayIcon playing={isPlaying(i)} /><span>{i === index && phase === 'loading' ? 'Loading preview' : isPlaying(i) ? 'Pause preview' : 'Play preview'}</span></span>
+              </button>
+              <div className="record-caption"><h3>{title(record)}</h3><span>{record.year}</span></div>
+              <p className="record-credit">{credits(record)}</p>
+              <div className="record-bottom"><span>{record.label}</span><a href={record.url} {...external} aria-label={'Listen to ' + record.title + ' on Apple Music'}>Listen</a></div>
             </article>
           ))}
         </div>
-        <details className="catalogue" open>
-          <summary>More releases</summary>
-          <div>{releases.slice(2).map((record, i) => <div className="catalogue-row" key={record.title}><button onClick={() => play(i + 2)} aria-label={`${action(i + 2)}: ${record.title}`}><img src={record.art} width="800" height="800" alt="" loading="lazy" /><span><strong>{title(record)}</strong><small>{record.title.includes('Remix') ? 'Will Taylor (UK) · John Summit + Kaysin remix' : credits(record)}</small></span><PlayIcon playing={isPlaying(i + 2)} /></button><span className="catalogue-label">{record.label}</span><time dateTime={record.date}>{record.year}</time><a href={record.url} {...external}>Listen</a></div>)}</div>
-        </details>
+        <div className="records-foot page-gutter">
+          <p>Originals, collaborations & remixes</p>
+          <div>
+            <a href="https://open.spotify.com/artist/10mZhaOPNKtQfg46DptrBU" {...external}>Spotify</a>
+            <a href="https://www.beatport.com/artist/kaysin/641789" {...external}>Beatport</a>
+            <a href="https://soundcloud.com/kaysin" {...external}>SoundCloud</a>
+          </div>
+        </div>
       </section>
 
       {phase !== 'idle' && <aside className="audio-player" aria-label="Preview controls"><button onClick={() => play(index)} aria-label={phase === 'playing' ? 'Pause preview' : 'Resume preview'}><PlayIcon playing={phase === 'playing'} /></button><div className="player-track"><strong>{title(track)}</strong><span>{phase === 'loading' ? 'Loading preview' : track.artist}</span></div><input type="range" aria-label="Preview position" min="0" max={duration || 1} step="0.1" value={Math.min(time, duration || 1)} disabled={!duration} onChange={event => { if (audio.current && duration) { audio.current.currentTime = Number(event.target.value); setTime(Number(event.target.value)); } }} /><span className="player-clock">{clock(time)}{duration ? ` / ${clock(duration)}` : ''}</span><a href={track.url} {...external}>Full release</a><button className="player-close" aria-label="Stop preview and close controls" onClick={() => { generation.current += 1; audio.current?.pause(); setPhase('idle'); }}>×</button>{error && <p role="status">{error}</p>}</aside>}
